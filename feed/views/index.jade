@@ -1,5 +1,20 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
+  .container.home
+    .row.entrar
+      .col.s8.z-depth-1.box.animated.fadeInDown
+        .row
+        .row
+          .col.s10.offset-s1
+            h5 Preencha para comentar
+          .input-field.col.s10.offset-s1
+            input#name.validate(type='text')
+            label(for='name') Nome
+        .row
+          .input-field.col.s10.offset-s1
+            input#avatar.validate(type='text')
+            label(for='avatar') Foto de Avatar (link)
+        .row
+          .col.s4.offset-s4
+            .waves-effect.waves-light.btn Entrar
+        .row

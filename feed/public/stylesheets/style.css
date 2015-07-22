@@ -1,8 +1,26 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  height:100%;
+  font-family: "Roboto", sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+body {
+  padding: 50px;
+  height: 100vh;
+  width: 100vw;
+  background: url(../images/photo1.jpeg) ;
+  background-size: 100% 100%;
+}
+
+.box {
+  background: #ffffff;
+  opacity: 0.9;
+  border-radius: 5px;
+}
+
+.entrar {
+  padding: 10%  0 0 25%;
 }
