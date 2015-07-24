@@ -1,0 +1,11 @@
+.comment.box
+   a.avatar
+      img(src=comment.avatar ? comment.avatar : 'images/default_user.jpg')
+   .content
+      a.author #{comment.author}
+      .metadata
+         span(class='date timeago', sent-at=comment.createdAt)
+      .text !{comment.body}
+      if comment.photo
+         img.image(src=comment.photo)
+.divider

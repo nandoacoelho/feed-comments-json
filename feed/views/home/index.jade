@@ -1,0 +1,30 @@
+extends ../layout.jade
+
+block head
+  title Feed de Comentários - Entrar
+
+
+block content
+  .container.home
+    .row
+      .row
+        .col.s2.offset-s5
+          img.logo(src='images/globocomlogo.png')
+      .col.s4.offset-s4.z-depth-1.box(class=userError ? '' : 'animated fadeInDown')
+        form(action='/entrar', method='post')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .row
+          .row
+            .col.s12
+              h5 Preencha para comentar
+          .row
+            .input-field.col.s10.offset-s1
+              input#name( name='name' type='text' class=userError ? 'invalid' : '')
+              label.blue-text(for='name') Nome
+            div.col.s10.offset-s1(class=userError ? 'animated fadeInDown' : 'hidden')
+              label.error O nome não pode ser vazio.
+            .input-field.col.s10.offset-s1
+              input#avatar(name='avatar', type='text')
+              label.blue-text(for='avatar') Foto de Avatar (link)
+          .row
+            button.waves-effect.waves-light.blue.btn(type='submit') Entrar

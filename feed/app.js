@@ -1,30 +1,60 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const KEY = 'feed.sid',
+    SECRET = 'feed';
+var express = require('express'),
+    load = require('express-load'),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    expressSession = require('express-session'),
+    app = express(),
+    server = require('http').Server(app),
+    io = require('socket.io')(server),
+    cookie = cookieParser(SECRET),
+    csurf = require('csurf'),
+    store = new expressSession.MemoryStore();
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
-var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(cookie);
+app.use(expressSession({
+  secret: SECRET,
+  name: KEY,
+  resave: true,
+  saveUninitialized: true,
+  store: store
+}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public'));
+app.use(csurf());
+app.use(function(req, res, next) {
+    res.locals._csrf = req.csrfToken();
+    next();
+});
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/comments', comments);
+//START
+io.use(function(socket, next) {
+    var data = socket.request;
+    cookie(data, {}, function(err) {
+        var sessionID = data.signedCookies[KEY];
+        store.get(sessionID, function(err, session) {
+            if (err || !session) {
+                return next(new Error('acesso negado'));
+            } else {
+                socket.handshake.session = session;
+                return next();
+            }
+        });
+    });
+});
+
+load('models/schema.js')
+    .then('controllers')
+    .then('routes')
+    .into(app);
+
+require('./sockets/feed.js')(io, app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,5 +87,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
+require('./boot')(app).start(function() {
+    server.listen(5000, function() {
+        console.log('O feed de comentários está disponível em http://localhost:3000');
+    });
+});
 
 module.exports = app;

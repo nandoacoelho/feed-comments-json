@@ -1,0 +1,6 @@
+each comment in comments
+    include comment.jade
+if hasMorePages
+    .more-message-button.waves-effect.waves-light.btn(data-ultimo-id=lastId)
+        span.text carregar mais
+        div.yo.loader(style='display:none;')
