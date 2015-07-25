@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var atualizarDatasDeEnvio = function() {
+    var updateDate = function() {
         $('.timeago').html(function() {
             var date = $(this).attr('sent-at'),
                 date = date.substring(1, date.length - 1),
@@ -20,12 +20,12 @@ $(document).ready(function() {
         input.val('');
     };
 
-    var adicionarMensagensAntigas = function(comments) {
+    var addOldComments = function(comments) {
         $('#comments').append(comments);
-        atualizarDatasDeEnvio();
+        updateDate();
     };
 
-    var carregarMensagensAntigas = function(lastId) {
+    var loadOldComments = function(lastId) {
 
         $.ajax({
                 url: '/comment/old',
@@ -35,23 +35,23 @@ $(document).ready(function() {
             })
             .done(function(data) {
                 $('.more-message-button').remove();
-                adicionarMensagensAntigas(data);
+                addOldComments(data);
             })
             .fail(function() {
                 $('.loader').hide();
                 $('.more-message-button .text').show();
             });
 
-    }
+    };
 
     var socket = io();
 
     socket.on('receive-comment', function(comment) {
         $('#comments').prepend(comment);
-        atualizarDatasDeEnvio();
+        updateDate();
     });
 
-    socket.on('receive-old-comments', adicionarMensagensAntigas);
+    socket.on('receive-old-comments', addOldComments);
 
     $('#new-message-send-button').on('click', send);
     $('#new-message-text').keypress(function(event) {
@@ -66,9 +66,9 @@ $(document).ready(function() {
         $('.more-message-button .text').hide();
         $('.loader').show();
         var lastId = $(this).attr('last-id-date');
-        carregarMensagensAntigas(lastId);
+        loadOldComments(lastId);
     });
 
-    setInterval(atualizarDatasDeEnvio, 30000);
+    setInterval(updateDate, 30000);
 
 });

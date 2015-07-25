@@ -7,15 +7,15 @@ html {
   font-family: arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
-}
+  body {
+    height: 100vh;
+    width: 100%;
+    background: #ffffff;
+  }
 
-body {
-  height: 100vh;
-  width: 100%;
-  background: #ffffff;
-}
+    a {
+      color: #00B7FF;
+    }
 
 /**************************
  * CSS de Home
@@ -26,59 +26,95 @@ body {
   width: 100%;
   background: #ffffff;
   background-size: auto auto;
-}
-
-.logo {
-  width: 200px;
-  height: 200px;
-}
-
-.box {
   text-align: center;
-  background: #f7f7f7;
-  opacity: 0.9;
-  border-radius: 5px;
 }
+
+  .logo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .box {
+    background: #f7f7f7;
+    opacity: 0.9;
+    border-radius: 5px;
+  }
+
+    .hidden {
+      opacity: 0;
+    }
+
+    .error {
+      color: #ff0000;
+    }
 
 /**************************
  * CSS de Feed
  **************************/
-.more-message-button {
-  text-align: center;
-  cursor: pointer;
-  text-decoration: underline;
-  color: blue;
-  height: 35px;
-}
+
 .feed-container {
   max-width: 650px;
   margin-left: auto !important;
   margin-right: auto !important;
 }
-.login-container {
-  max-width: 600px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
 
-.hidden {
-  opacity: 0;
-}
+  .avatar-comment {
+    margin-left: 45%;
+    margin-top: 30%;
+    width: 60px;
+    height: 60px;
+  }
 
-.error {
-  color: #ff0000;
-}
+  #new-message-send-button {
+    margin-top: 5%;
+  }
 
-.image {
-  margin-top: 30%;
-  width: 60px;
-  height: 60px;
-}
+  .comment {
+    margin-left: 2%;
+  }
+    .content {
+      text-align: left;
+    }
+      .content.col.s7.input-field {
+        padding-left: 20px;
+      }
 
-.row.comment {
-  margin-left: 2%;
-}
+      .new-message {
+        padding-left: 10px;
+      }
 
-#new-message-send-button {
-  margin-top: 5%;
-}
+      .author {
+        font-weight: bold;
+      }
+
+      .avatar {
+        margin: 2% 0 0 30%;
+        width: 60px;
+        height: 60px;
+      }
+
+      .date {
+        color: #888888;
+      }
+
+      .play{
+        max-width: 450px;
+        margin: -260px 0 50px 0;
+        height: auto;
+        position: relative;
+        z-index: 10;
+      }
+
+      .photo, .video {
+        margin-top: 2%;
+        max-width: 480px;
+      }
+
+      .more-message-button {
+        margin-left: 20%;
+        text-align: center;
+        cursor: pointer;
+        height: 35px;
+      }
+
+

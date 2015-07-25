@@ -18,7 +18,6 @@ module.exports = function(io, app) {
             if (!data.msg) {
                 callback(new Error('Não pode ser vazio!!'));
             }
-
             Comment.create({
                 body: data.msg,
                 author: user.name,

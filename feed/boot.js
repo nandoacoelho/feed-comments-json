@@ -15,11 +15,12 @@ module.exports = function(app) {
                 for (var i = comments.length - 1; i >= 0; i--) {
                     var comment = comments[i];
                     var photo = null;
+                    var video = null;
 
                     if (comment.images && comment.images.length > 0) {
                         photo = comment.images[0].url;
                     } else if (comment.videos && comment.videos.length > 0) {
-                        photo = 'images/video_placeholder.jpg';
+                        video = comment.videos[0].thumb;
                     }
 
                     mensagensParaSeremGravadas.push({
@@ -27,7 +28,8 @@ module.exports = function(app) {
                         author: comment.author.name,
                         avatar: comment.author.avatar,
                         createdAt: comment.createdAt,
-                        photo: photo
+                        photo: photo,
+                        video: video
                     });
                 }
 

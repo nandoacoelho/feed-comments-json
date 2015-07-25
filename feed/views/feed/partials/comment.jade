@@ -1,11 +1,15 @@
 .comment.box
-   a.avatar
-      img(src=comment.avatar ? comment.avatar : 'images/default_user.jpg')
-   .content
-      a.author #{comment.author}
-      .metadata
-         span(class='date timeago', sent-at=comment.createdAt)
-      .text !{comment.body}
-      if comment.photo
-         img.image(src=comment.photo)
+   .row
+      a.avatar.col.s2
+         img.avatar.circle(src=comment.avatar ? comment.avatar : 'images/default_user.jpg')
+      .content.col.s9.input-field
+         a.author #{comment.author}
+         .metadata
+            span.date.timeago(sent-at=comment.createdAt)
+         .text !{comment.body}
+         if comment.photo
+            img.responsive-img.photo(src=comment.photo)
+         if comment.video
+            img.responsive-img.video(src=comment.video)
+            img.responsive-img.play(src='images/video.png')
 .divider

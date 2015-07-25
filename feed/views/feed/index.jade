@@ -1,8 +1,7 @@
 extends ../layout.jade
 
 block head
-   script(src='/javascripts/jquery.min.js')
-   script(src='https://cdn.socket.io/socket.io-1.0.0.js')
+   script(src='/socket.io/socket.io.js')
    script(src='/javascripts/timeago.js')
    script(src='/javascripts/feed.js')
 
@@ -11,16 +10,13 @@ block content
    .feed-container.container.box.z-depth-1
       .row
       .comments
-         .row
          .row.comment
             .avatar.col.s2
-               img.image.circle(src=user.avatar ? user.avatar : 'images/default_user.jpg')
+               img.avatar-comment.circle(src=user.avatar ? user.avatar : 'images/default_user.jpg')
             .content.col.s7.input-field
-               textarea#new-message-text.materialize-textarea(name='new-message-text', length='140')
-               label.blue-text(for='new-message-text') Envie sua mensagem!
-               div.col.s10.offset-s1(class=userError ? 'animated fadeInDown' : 'hidden')
-                  label.error O nome não pode ser vazio.
-            button#new-message-send-button.col.s2.waves-effect.waves-light.blue.btn Enviar
+               textarea#new-message-text.materialize-textarea(name='newMmessage', length='140')
+               label.new-message.blue-text(for='newMessage') Envie sua mensagem!
+            div#new-message-send-button.col.s2.waves-effect.waves-light.blue.btn Enviar
          .row
       .divider
       #comments.comments
