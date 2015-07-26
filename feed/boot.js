@@ -52,7 +52,7 @@ module.exports = function(app) {
 
     var Boot = {
         start: function(callback) {
-            console.log('Acessando banco de dados.........');
+            console.log('Acessando banco de dados....................');
             app.models.schema.sequelize.sync().then(function() {
                 console.log('Verificando se JSON já foi previamente carregado.');
                 Comment.count().then(function(c) {

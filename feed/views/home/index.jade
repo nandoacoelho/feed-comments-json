@@ -8,9 +8,9 @@ block content
   .container.home
     .row
       .row
-        .col.s2.offset-s5
+        .col.s3.offset-s4.m3.offset-m5.l4.offset-l4
           img.logo(src='images/globocomlogo.png')
-      .col.s4.offset-s4.z-depth-1.box(class=userError ? '' : 'animated fadeInDown')
+      .col.l4.offset-l4.m5.offset-m4.s6.offset-s3.z-depth-1.box(class=userError ? '' : 'animated fadeInDown')
         form(action='/entrar', method='post')
           input(type='hidden', name='_csrf', value=_csrf)
           .row

@@ -127,3 +127,16 @@ html {
       }
 
 
+/**************************
+ * CSS de Erro
+ **************************/
+
+
+  .not-found {
+    text-align: center;
+  }
+
+  .not-found h1 {
+    color: blue;
+    font-size: 300px;
+  }
