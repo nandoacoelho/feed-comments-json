@@ -5,7 +5,7 @@ $(document).ready(function() {
             var date = $(this).attr('sent-at'),
                 date = date.substring(1, date.length - 1),
                 date = new Date(date);
-            return window.APP.modules.timeago(date, new Date());
+            return jQuery.timeago(date);
         });
     };
 
@@ -38,8 +38,8 @@ $(document).ready(function() {
                 addOldComments(data);
             })
             .fail(function() {
-                $('.loader').hide();
-                $('.more-message-button .text').show();
+                $('.hexdots-loader').hide();
+                $('.more-message-button.blue.waves-effect.waves-light.btn').show();
             });
 
     };
@@ -63,8 +63,8 @@ $(document).ready(function() {
     });
 
     $('#comments').on('click', '.more-message-button', function() {
-        $('.more-message-button .text').hide();
-        $('.loader').show();
+        $('.more-message-button.blue.waves-effect.waves-light.btn').hide();
+        $('.hexdots-loader').show();
         var lastId = $(this).attr('last-id-date');
         loadOldComments(lastId);
     });

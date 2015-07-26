@@ -1,7 +1,9 @@
 each comment in comments
     include comment.jade
 if hasMorePages
+    .row
+    .row
         .col.s3.offset-s4
-            div.more-message-button.blue.waves-effect.waves-light.btn(last-id-date=lastId)
-                span.text carregar mais
-                div.yo.loader(style='display:none;')
+            .more-message-button.blue.waves-effect.waves-light.btn(last-id-date=lastId) Mais
+                .hexdots-loader(style='display:none;')
+    .row

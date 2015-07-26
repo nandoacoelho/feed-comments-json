@@ -9,7 +9,7 @@ module.exports = function(io, app) {
         client.on('new-message', function(data) {
             newComment(data, function(err, result) {
                 if (!err && result) {
-                    SendNewComment(result);
+                    sendNewComment(result);
                 }
             });
         });
@@ -29,7 +29,7 @@ module.exports = function(io, app) {
             });
         };
 
-        var SendNewComment = function(comment) {
+        var sendNewComment = function(comment) {
             app.render('feed/partials/comment', {
                 comment: {
                     id: comment.id,
@@ -44,7 +44,7 @@ module.exports = function(io, app) {
             });
         };
 
-        var SendOldComments = function() {
+        var sendOldComments = function() {
             Comment.old(null, function(error, result) {
                 if (error) {
                     console.log(error);
@@ -55,9 +55,6 @@ module.exports = function(io, app) {
                 });
             });
         };
-        SendOldComments();
+        sendOldComments();
     });
 };
-/**
- * Created by fernandodealmeidacoelho on 22/07/15.
- */

@@ -12,7 +12,6 @@ var express = require('express'),
     csurf = require('csurf'),
     store = new expressSession.MemoryStore();
 
-
 // view engine setup
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -33,7 +32,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-//START
 io.use(function(socket, next) {
     var data = socket.request;
     cookie(data, {}, function(err) {
@@ -88,9 +86,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
+//START
 require('./boot')(app).start(function() {
     server.listen(3000, function() {
-        console.log('O feed de comentários está disponível em http://localhost:3000');
+        console.log('ITS ALIVE!! Acesse: http://localhost:3000');
     });
 });
 

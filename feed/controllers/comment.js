@@ -11,7 +11,7 @@ module.exports = function(app) {
                         next(error);
                         return;
                     }
-                    res.render('comments', result);
+                    res.render('feed/partials/comments', result);
                 });
         }
     };

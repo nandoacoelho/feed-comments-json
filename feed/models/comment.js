@@ -15,7 +15,8 @@ module.exports = function(sequelize, DataType) {
             defaultValue: DataType.NOW
         },
         photo: DataType.STRING,
-        video: DataType.STRING
+        video: DataType.STRING,
+        verified: DataType.STRING
     }, {
         underscored: true,
         freezeTableName: true,
@@ -49,7 +50,8 @@ module.exports = function(sequelize, DataType) {
                                 avatar: comment.avatar,
                                 createdAt: comment.createdAt,
                                 photo: comment.photo,
-                                video: comment.video
+                                video: comment.video,
+                                verified: comment.verified
                             });
                             lastId = comment.id;
                         }
