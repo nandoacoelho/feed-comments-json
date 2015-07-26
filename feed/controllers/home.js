@@ -5,9 +5,21 @@ module.exports = function(app) {
         },
         entrar: function(req, res) {
             var name = req.body.name,
-                avatar = req.body.avatar;
+                avatar = req.body.avatar,
+                validImg = false;
 
+            //check if the link is really an image
+            if(/^http:\/\/.+\.(gif|png|jpg|jpeg)$/i.test(avatar)) {
+                validImg = true;
+            }
             if (name) {
+                if (avatar) {
+                    if (validImg === false) {
+                        res.render('home/index', {
+                            avatarError: true
+                        });
+                    }
+                }
                 var user = {
                     name: name,
                     avatar: avatar
