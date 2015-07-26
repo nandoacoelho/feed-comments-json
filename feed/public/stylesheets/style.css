@@ -133,10 +133,11 @@ html {
 
 
   .not-found {
+    padding-top: 5%;
     text-align: center;
   }
 
   .not-found h1 {
     color: blue;
-    font-size: 300px;
+    font-weight: bold;
   }

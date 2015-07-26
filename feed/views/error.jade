@@ -4,8 +4,10 @@ block content
   .container.not-found
     .row
     .row
+    .row
       a
-        img(src='images/error.jpg')
-      h3 Esta não é a página que você está procurando.
-      h3= error.status
-      pre #{error.stack}
+        img.responsive-img(src='images/error.jpg')
+      h1 Esta não é a página que você está procurando.
+    .divider
+    .row
+      h3= error.status + ' ' + message
