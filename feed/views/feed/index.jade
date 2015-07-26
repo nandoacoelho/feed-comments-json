@@ -12,7 +12,7 @@ block content
       .comments
          .row.comment
             .avatar.col.s2
-               img.avatar-comment.circle(src=user.avatar ? user.avatar : 'images/default_user.jpg')
+               img.responsive-img.avatar-comment.circle(src=user.avatar ? user.avatar : 'images/default_user.jpg')
             .content.col.s7.input-field
                textarea#new-message-text.materialize-textarea(name='newMmessage', length='140')
                label.new-message.blue-text(for='newMessage') Envie sua mensagem!
