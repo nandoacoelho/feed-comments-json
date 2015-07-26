@@ -11,7 +11,7 @@ module.exports = function(app) {
         if (!sequelize) {
             sequelize = new Sequelize('feed-dados', null, null, {
                 dialect: 'sqlite',
-                storage: __dirname + '/../../database/feed-dados.db',
+                storage: __dirname + '/../database/feed-dados.db',
                 logging: false
             });
         }

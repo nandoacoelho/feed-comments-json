@@ -1,6 +1,7 @@
 const KEY = 'feed.sid',
     SECRET = 'feed';
 var express = require('express'),
+    error = require('./middlewares/error'),
     load = require('express-load'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
@@ -57,8 +58,8 @@ require('./sockets/feed.js')(io, app);
 
 // error handlers
 // error handlers
-app.use(errors.notFoundError);
-app.use(errors.Error);
+app.use(error.notFoundError);
+app.use(error.error);
 
 
 //START
