@@ -1,31 +1,37 @@
 module.exports = function(app) {
-    var HomeController = {
-        index: function(req, res) {
+    var checkImg = function(url) {
+        var arr = ["jpeg", "jpg", "gif", "png"];
+        var ext = url.substring(url.lastIndexOf(".") + 1);
+        for (var i = 0; i < arr.length; i++) {
+            if (ext.indexOf(arr[i]) > -1) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    return {
+        index: function (req, res) {
             res.render('home/index');
         },
-        entrar: function(req, res) {
+        entrar: function (req, res) {
             var name = req.body.name,
-                avatar = req.body.avatar,
-                validImg = false;
+                avatar = req.body.avatar;
 
-            //check if the link is really an image
-            if(/^http:\/\/.+\.(gif|png|jpg|jpeg)$/i.test(avatar)) {
-                validImg = true;
-            }
             if (name) {
                 if (avatar) {
-                    if (validImg === false) {
+                    if (!checkImg(avatar)) {
                         res.render('home/index', {
                             avatarError: true
                         });
                     }
                 }
-                var user = {
+                req.session.user = {
                     name: name,
                     avatar: avatar
                 };
-                req.session.user = user;
                 res.redirect('/feed');
+
             } else {
                 res.render('home/index', {
                     userError: true
@@ -33,5 +39,4 @@ module.exports = function(app) {
             }
         }
     };
-    return HomeController;
 };

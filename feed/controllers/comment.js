@@ -1,12 +1,12 @@
 module.exports = function(app) {
     var Comment = app.models.schema.Comment;
 
-    var CommentController = {
-        old: function(req, res, next) {
+    return {
+        old: function (req, res, next) {
             Comment.old({
                     fromId: req.query.thisId
                 },
-                function(error, result) {
+                function (error, result) {
                     if (error) {
                         next(error);
                         return;
@@ -15,5 +15,4 @@ module.exports = function(app) {
                 });
         }
     };
-    return CommentController;
 };
