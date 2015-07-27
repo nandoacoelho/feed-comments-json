@@ -33,6 +33,14 @@ module.exports = function(app) {
                 res.redirect('/feed');
 
             } else {
+                if (avatar) {
+                    if (!checkImg(avatar)) {
+                        res.render('home/index', {
+                            avatarError: true,
+                            userError: true
+                        });
+                    }
+                }
                 res.render('home/index', {
                     userError: true
                 });
