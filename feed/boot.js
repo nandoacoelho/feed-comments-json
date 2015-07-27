@@ -52,12 +52,12 @@ module.exports = function(app) {
 
     var Boot = {
         start: function(callback) {
-            console.log('Acessando banco de dados....................');
+            console.log('Acessando banco de dados...');
             app.models.schema.sequelize.sync().then(function() {
-                console.log('Verificando se JSON já foi previamente carregado.');
+                console.log('Será que o JSON foi carregado anteriormente? Verificando...');
                 Comment.count().then(function(c) {
                     if (c === 0) {
-                        console.log('Importando JSON para o banco de dados.');
+                        console.log('Importando JSON para o banco de dados...');
                         loadInitialData(callback);
                     } else {
                         console.log('JSON já foi importado para o banco de dados anteriormente.');
