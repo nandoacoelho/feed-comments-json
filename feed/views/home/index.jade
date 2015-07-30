@@ -10,7 +10,7 @@ block content
         .col.s3.offset-s4.m3.offset-m5.l4.offset-l4
           img.logo(src='images/globocomlogo.png')
       .col.l4.offset-l4.m5.offset-m4.s6.offset-s3.z-depth-1.box(class=userError ? '' : 'animated fadeInDown')
-        form(action='/entrar', method='post' onload="recoverInputs(document.forms.myForm,retrieveCookie('inpVal'),true);")
+        form(action='/enter', method='post' onload="recoverInputs(document.forms.myForm,retrieveCookie('inpVal'),true);")
           input(type='hidden', name='_csrf', value=_csrf)
           .row
           .row
@@ -29,3 +29,6 @@ block content
               label.error Este link não é uma imagem.
           .row
             button.waves-effect.waves-light.blue.btn(type='submit' onclick="") Entrar
+  //Including js in the bottom for performance
+  include ../js.jade
+

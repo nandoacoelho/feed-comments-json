@@ -1,11 +1,14 @@
+//backend sockets
 module.exports = function(io, app) {
     var sockets = io.sockets,
         Comment = app.models.schema.Comment;
 
+    //connect with client
     sockets.on('connection', function(client) {
         var session = client.handshake.session,
             user = session.user;
 
+        //receive new comment from client
         client.on('new-message', function(data) {
             newComment(data, function(err, result) {
                 if (!err && result) {
@@ -29,6 +32,7 @@ module.exports = function(io, app) {
             });
         };
 
+        //Send new comment to client to display
         var sendNewComment = function(comment) {
             app.render('feed/partials/comment', {
                 comment: {
@@ -44,6 +48,7 @@ module.exports = function(io, app) {
             });
         };
 
+        //Send old comments to client and render the comments
         var sendOldComments = function() {
             Comment.old(null, function(error, result) {
                 if (error) {

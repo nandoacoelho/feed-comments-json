@@ -3,7 +3,7 @@ module.exports = function(app) {
         Comment = app.models.schema.Comment;
 
     var loadInitialData = function(callback) {
-        var url = 'https://raw.githubusercontent.com/SelecaoGlobocom/fernando-almeida-coelho/master/feed-dados.json?token=AFWT5aybH-q4UFiLMZ5UoJ1U6oAgjZe5ks5VuQiXwA%3D%3D';
+        var url = 'https://raw.githubusercontent.com/SelecaoGlobocom/fernando-almeida-coelho/master/feed-dados.json?token=AFWT5THoS--kQJX2GS1i-Pajq9knaujhks5VwpHQwA%3D%3D';
         request({
             url: url,
             json: true

@@ -85,6 +85,11 @@ html {
         padding-left: 20px;
       }
 
+      .text {
+        width: 100%;
+        word-wrap: break-word;
+      }
+
       .new-message {
         padding-left: 10px;
       }

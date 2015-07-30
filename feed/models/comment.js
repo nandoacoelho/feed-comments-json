@@ -22,6 +22,7 @@ module.exports = function(sequelize, DataType) {
         freezeTableName: true,
         tableName: 'COMMENTS',
         classMethods: {
+            //get 10 previous comments
             old: function(config, callback) {
                 var _configQuery = {
                     order: 'id DESC',
@@ -66,6 +67,5 @@ module.exports = function(sequelize, DataType) {
             }
         }
     });
-
     return Comment;
 };

@@ -57,7 +57,6 @@ require('./sockets/feed.js')(io, app);
 
 
 // error handlers
-// error handlers
 app.use(error.notFoundError);
 app.use(error.error);
 

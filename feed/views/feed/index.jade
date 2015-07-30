@@ -1,10 +1,5 @@
 extends ../layout.jade
 
-block head
-   script(src='/socket.io/socket.io.js')
-   script(src='/javascripts/jquery.timeago.js')
-   script(src='/javascripts/feed.js')
-
 block content
    .row
    .feed-container.container.box.z-depth-1
@@ -14,9 +9,11 @@ block content
             .avatar.col.s2
                img.responsive-img.avatar-comment.circle(src=user.avatar ? user.avatar : 'images/default_user.jpg')
             .content.col.s7.input-field
-               textarea#new-message-text.materialize-textarea(name='newMmessage', length='140')
+               textarea#new-message-text.materialize-textarea(name='newMmessage', length='140' maxlength='140')
                label.new-message.blue-text(for='newMessage') Envie sua mensagem!
             div#new-message-send-button.col.s2.waves-effect.waves-light.blue.btn Enviar
          .row
       .divider
       #comments.comments
+   //Including js in the bottom for performance
+   include ../js.jade
