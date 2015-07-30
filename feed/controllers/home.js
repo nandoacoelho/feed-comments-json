@@ -1,4 +1,17 @@
 module.exports = function(app) {
+    // Method to check if the URL is really an image.
+    // Somewhat hacky I confess.
+    var checkImg = function(url) {
+        var arr = ["jpeg", "jpg", "gif", "png"];
+        var ext = url.substring(url.lastIndexOf(".") + 1);
+        for (var i = 0; i < arr.length; i++) {
+            if (ext.indexOf(arr[i]) > -1) {
+                return true;
+            }
+        }
+        return false;
+    };
+
     return {
         //Redirect to the index
         index: function (req, res) {
@@ -25,31 +38,16 @@ module.exports = function(app) {
                 res.redirect('/feed');
 
             } else {
-                if (avatar) {
-                    if (!checkImg(avatar)) {
-                        res.render('home/index', {
-                            avatarError: true,
-                            userError: true
-                        });
-                    }
+                if (avatar && !checkImg(avatar)) {
+                    res.render('home/index', {
+                        avatarError: true,
+                        userError: true
+                    });
                 }
                 res.render('home/index', {
                     userError: true
                 });
             }
         }
-    };
-
-    // Method to check if the URL is really an image.
-    // Somewhat hacky I confess.
-    var checkImg = function(url) {
-        var arr = ["jpeg", "jpg", "gif", "png"];
-        var ext = url.substring(url.lastIndexOf(".") + 1);
-        for (var i = 0; i < arr.length; i++) {
-            if (ext.indexOf(arr[i]) > -1) {
-                return true;
-            }
-        }
-        return false;
     };
 };

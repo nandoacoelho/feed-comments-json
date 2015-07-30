@@ -10,7 +10,7 @@ block content
         .col.s3.offset-s4.m3.offset-m5.l4.offset-l4
           img.logo(src='images/globocomlogo.png')
       .col.l4.offset-l4.m5.offset-m4.s6.offset-s3.z-depth-1.box(class=userError ? '' : 'animated fadeInDown')
-        form(action='/enter', method='post' onload="recoverInputs(document.forms.myForm,retrieveCookie('inpVal'),true);")
+        form(action='/enter', method='post')
           input(type='hidden', name='_csrf', value=_csrf)
           .row
           .row
@@ -23,10 +23,10 @@ block content
             .col.s10.offset-s1(class=userError ? 'animated fadeInDown' : 'hidden')
               label.error O nome não pode ser vazio.
             .file-field.input-field.col.s10.offset-s1
-              input.validate.avatar#avatar(name='avatar', type='text')
+              input.validate.avatar#avatar(name='avatar', type='text' class=avatarError ? 'invalid' : '')
               label.blue-text(for='avatar') Foto de Avatar (Link)
             .col.s10.offset-s1(class=avatarError ? 'animated fadeInDown' : 'hidden')
-              label.error Este link não é uma imagem.
+              label.error Este link não explicitamente é uma imagem.
           .row
             button.waves-effect.waves-light.blue.btn(type='submit' onclick="") Entrar
   //Including js in the bottom for performance
