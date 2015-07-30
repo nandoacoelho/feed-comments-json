@@ -1,4 +1,7 @@
 module.exports = function(sequelize, DataType) {
+
+    // Parse the JSON searching for the following fields
+    // to fill the database
     var Comment = sequelize.define('Comment', {
         id: {
             type: DataType.INTEGER,
@@ -22,7 +25,7 @@ module.exports = function(sequelize, DataType) {
         freezeTableName: true,
         tableName: 'COMMENTS',
         classMethods: {
-            //get 10 previous comments
+            // Get 10 previous comments
             old: function(config, callback) {
                 var _configQuery = {
                     order: 'id DESC',

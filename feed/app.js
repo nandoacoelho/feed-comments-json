@@ -61,7 +61,7 @@ app.use(error.notFoundError);
 app.use(error.error);
 
 
-//START
+// START
 require('./boot')(app).start(function() {
     server.listen(3000, function() {
         console.log('ITS ALIVE!! Acesse: http://localhost:3000');

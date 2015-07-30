@@ -1,5 +1,6 @@
 module.exports = function(app) {
-    // Method to check if the URL is really an image.
+
+    // Private method to check if the URL is really an image.
     // Somewhat hacky I confess.
     var checkImg = function(url) {
         var arr = ["jpeg", "jpg", "gif", "png"];
@@ -13,10 +14,12 @@ module.exports = function(app) {
     };
 
     return {
+
         //Redirect to the index
         index: function (req, res) {
             res.render('home/index');
         },
+
         //Check if the name or the avatar are filled
         //If not, return to index with error
         enter: function (req, res) {

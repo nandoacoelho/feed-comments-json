@@ -6,7 +6,7 @@ var path = require('path'),
     schema = null,
     db = {};
 
-//parse json and fill database
+// Parse json and fill database
 module.exports = function(app) {
     if (!schema) {
         if (!sequelize) {
