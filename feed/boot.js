@@ -59,6 +59,7 @@ module.exports = function(app) {
                     if (c === 0) {
                         console.log('Importando JSON para o banco de dados...');
                         loadInitialData(callback);
+                        console.log('Banco de dados importado!');
                     } else {
                         console.log('JSON já foi importado para o banco de dados anteriormente.');
                         callback();
