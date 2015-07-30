@@ -76,6 +76,7 @@ $(document).ready(function() {
         $('.progress.indeterminate').show();
         var lastId = $(this).attr('last-id-date');
         loadOldComments(lastId);
+        $('.row.loading').remove();
     });
 
     setInterval(updateDate, 30000);
